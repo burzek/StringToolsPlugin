@@ -1,30 +1,64 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-  <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-  <id>sk.araed.intellij.plugins.stringtools.StringToolsPlugin</id>
+  <id>StringToolsPlugin</id>
+  <name>String Tools</name>
+  <version>4.1</version>
+  <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
-  <!-- Public plugin name should be written in Title Case.
-       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-  <name>StringToolsPlugin</name>
 
-  <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-  <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
-
-  <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-       Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
   <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+      Handy string tools<br>
+      <small>Handy string tools for converting (hex, binary, oct), encoding/decoding (URL, HTML, Base64) and computing HASH/CRCs.</small>
+      ]]>
+  </description>
 
-  <!-- Product and plugin compatibility requirements.
-       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-  <depends>com.intellij.modules.platform</depends>
+  <change-notes><![CDATA[
+            v2.0
+            <small>
+                <ul>Added new operations
+                   <li>ASCII/OCT conversions</li>
+                   <li>ROT13</li>
+                   <li>MD5 hash</li>
+                   <li>SHA256 hash</li>
+                   <li>SHA512 hash</li>
+                   <li>CRC32 checksum</li>
+                   <li>LUHN digit generator</li>
+                </ul>
+            </small>
+            <br>
+            v3.0
+            <small>
+              <ul>ttt
+                <li>Fixed errors</li>
+                <li>Description in status bar is displayed for invalid input or error</li>
+              </ul>
+            </small>
+            <br>
+            v4.0
+            <small>
+              <ul>
+                <li>Fixed internal errors</li>
+                <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
+                <li>Dialog can be closed by ESC key
+              </ul>
+            </small>
+            v4.1
+            <small>
+              <ul>
+                <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
+                <li>Removed deprecetad API calls (internal)</li>
+              </ul>
+            </small>
+          ]]>
+  </change-notes>
 
-  <!-- Extension points defined by the plugin.
-       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-  <extensions defaultExtensionNs="com.intellij">
+  <idea-version since-build="145.0"/>
 
-  </extensions>
+
+  <actions>
+    <action class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction" id="StringTools" text="String Tools">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <keyboard-shortcut first-keystroke="control shift S" second-keystroke="T" keymap="$default"/>
+    </action>
+  </actions>
+
 </idea-plugin>
