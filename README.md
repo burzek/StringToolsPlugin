@@ -1,4 +1,4 @@
-# StringFunctionsPlugin
+# IntelliJ StringToolsPlugin
 4.1
 
 Handy intellij idea plugin  for converting (hex, binary) and encoding/decoding (URL, HTML entities, Base64) strings.
