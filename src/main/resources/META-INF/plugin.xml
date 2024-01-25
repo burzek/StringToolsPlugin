@@ -4,6 +4,7 @@
   <version>4.1</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
+  <depends>com.intellij.modules.platform</depends>
 
   <description><![CDATA[
       Handy string tools<br>
@@ -51,7 +52,7 @@
           ]]>
   </change-notes>
 
-  <idea-version since-build="145.0"/>
+  <idea-version since-build="203"/>
 
 
   <actions>
@@ -60,5 +61,6 @@
       <keyboard-shortcut first-keystroke="control shift S" second-keystroke="T" keymap="$default"/>
     </action>
   </actions>
+
 
 </idea-plugin>
