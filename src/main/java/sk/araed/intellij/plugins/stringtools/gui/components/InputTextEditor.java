@@ -33,8 +33,8 @@ public class InputTextEditor extends EditorTextField {
 
 	private void initializeGUI() {
 		setOneLineMode(false);
-		setPreferredSize(new Dimension(350, 100));
-		setMinimumSize(new Dimension(350, 100));
+		setPreferredSize(new Dimension(640, 200));
+		setMinimumSize(new Dimension(640, 200));
 	}
 
 	public void showWarning(boolean showWarning) {

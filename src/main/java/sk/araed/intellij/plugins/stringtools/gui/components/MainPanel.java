@@ -1,5 +1,13 @@
 package sk.araed.intellij.plugins.stringtools.gui.components;
 
+import static java.awt.GridBagConstraints.BOTH;
+import static java.awt.GridBagConstraints.FIRST_LINE_START;
+import static java.awt.GridBagConstraints.HORIZONTAL;
+import static java.awt.GridBagConstraints.NONE;
+import static java.awt.GridBagConstraints.NORTHWEST;
+import static java.awt.GridBagConstraints.VERTICAL;
+
+import com.intellij.util.ui.JBUI.Borders;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,6 +22,7 @@ import javax.swing.JTextArea;
 
 import com.intellij.ui.components.panels.VerticalLayout;
 
+import javax.swing.border.EmptyBorder;
 import sk.araed.intellij.plugins.stringtools.StringToolsController;
 import sk.araed.intellij.plugins.stringtools.data.ConversionData;
 import sk.araed.intellij.plugins.stringtools.data.Operation;
@@ -69,14 +78,16 @@ public class MainPanel extends JPanel {
 		setLayout(new GridBagLayout());
 
 		//original text area
-		add(guiFactory.createLabel(ResourceKey.ORIGINAL_TEXT), guiFactory.getGridBagBuilder().withPos(0, 0).toGBC());
+		add(guiFactory.createLabel(ResourceKey.ORIGINAL_TEXT), guiFactory.getGridBagBuilder().withPos(0, 0)
+				.withFill(HORIZONTAL).withAnchor(NORTHWEST).withWeight(0.0, 0.0).toGBC());
 		inputText = guiFactory.createInputTextEditor(controller);
-		add(inputText, guiFactory.getGridBagBuilder().withPos(1, 0).toGBC());
+		add(inputText, guiFactory.getGridBagBuilder().withPos(1, 0).withAnchor(NORTHWEST).withFill(BOTH).toGBC());
 
 		//converted text area
-		add(guiFactory.createLabel(ResourceKey.CONVERTED_TEXT), guiFactory.getGridBagBuilder().withPos(0, 1).toGBC());
+		add(guiFactory.createLabel(ResourceKey.CONVERTED_TEXT), guiFactory.getGridBagBuilder().withPos(0, 1)
+				.withFill(HORIZONTAL).withAnchor(NORTHWEST).withWeight(0.0, 0.0).toGBC());
 		outputText = guiFactory.createOutputTextField();
-		add(outputText, guiFactory.getGridBagBuilder().withPos(1, 1).toGBC());
+		add(outputText, guiFactory.getGridBagBuilder().withPos(1, 1).withAnchor(NORTHWEST).withFill(BOTH).toGBC());
 
 		//actions panel
 		final JPanel actionsPanel = guiFactory.createPanel(new GridLayout(1, 3));
@@ -109,24 +120,48 @@ public class MainPanel extends JPanel {
 		operations.add(guiFactory.createOperationSelector(ResourceKey.URL_DECODE_ACTION, Operation.URL_DECODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.HTML_ENCODE_ACTION, Operation.HTML_ENCODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.HTML_DECODE_ACTION, Operation.HTML_DECODE, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.BASIC_AUTH_ENCODE_ACTION, Operation.BASICAUTH_ENCODE, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.BASIC_AUTH_DECODE_ACTION, Operation.BASICAUTH_DECODE, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.JWT_DECODE_ACTION, Operation.HTML_DECODE, controller, buttonGroup));
 		operations.subList(6, operations.size()).forEach(radioPanel2::add);
 		guiFactory.addBorder(radioPanel2, ResourceKey.CODING_TITLE);
 		actionsPanel.add(radioPanel2);
 
-		//other operations
+
+		//SHA operations
 		final JPanel radioPanel3 = guiFactory.createPanel(new VerticalLayout(0));
-		operations.add(guiFactory.createOperationSelector(ResourceKey.ROT13_ACTION, Operation.ROT13, controller, buttonGroup));
-		operations.add(guiFactory.createOperationSelector(ResourceKey.MD5_HASH_ACTION, Operation.MD5_HASH, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA_256_ACTION, Operation.SHA256_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA_384_ACTION, Operation.SHA384_HASH, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA_512_ACTION, Operation.SHA512_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA3_256_ACTION, Operation.SHA3_256_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA3_384_ACTION, Operation.SHA3_384_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.SHA3_512_ACTION, Operation.SHA3_512_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_256_ACTION, Operation.KECCAK256_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_384_ACTION, Operation.KECCAK384_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_512_ACTION, Operation.KECCAK512_HASH, controller, buttonGroup));
+		operations.subList(15, operations.size()).forEach(radioPanel3::add);
+		guiFactory.addBorder(radioPanel3, ResourceKey.HASH_TITLE);
+		actionsPanel.add(radioPanel3);
+
+		//other operations
+		final JPanel radioPanel4 = guiFactory.createPanel(new VerticalLayout(0));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.ROT13_ACTION, Operation.ROT13, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.MD2_HASH_ACTION, Operation.MD2_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.MD4_HASH_ACTION, Operation.MD4_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.MD5_HASH_ACTION, Operation.MD5_HASH, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.CRC16_ACTION, Operation.CRC16, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.CRC32_ACTION, Operation.CRC32, controller, buttonGroup));
 		operations.add(guiFactory
 				.createOperationSelector(ResourceKey.LUHN_DIGIT_GEN_ACTION, Operation.LUHN_DIGIT_GENERATOR, controller, buttonGroup));
+		operations.subList(24, operations.size()).forEach(radioPanel4::add);
+		guiFactory.addBorder(radioPanel4, ResourceKey.OTHER_TITLE);
+		actionsPanel.add(radioPanel4);
 
-		operations.subList(12, operations.size()).forEach(radioPanel3::add);
-		guiFactory.addBorder(radioPanel3, ResourceKey.HASH_CRC_TITLE);
-		actionsPanel.add(radioPanel3);
+
+
 		add(actionsPanel, guiFactory.getGridBagBuilder().withPos(0, 3).withGridWidth(3).withAnchor(GridBagConstraints.CENTER).toGBC());
+
+
 
 		operations.get(0).setSelected(true);    //select first button
 

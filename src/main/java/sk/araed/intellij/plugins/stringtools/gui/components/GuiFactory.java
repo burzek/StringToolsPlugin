@@ -1,13 +1,19 @@
 package sk.araed.intellij.plugins.stringtools.gui.components;
 
+import com.intellij.openapi.ui.ComboBox;
+import com.intellij.ui.ComboBoxFieldPanel;
+import com.intellij.util.ui.JBUI.Borders;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBLabelDecorator;
 import com.intellij.ui.components.JBPanel;
 
+import sk.araed.intellij.plugins.stringtools.StringToolsController;
+import sk.araed.intellij.plugins.stringtools.conversion.ExtendedHashOperationProvider;
 import sk.araed.intellij.plugins.stringtools.data.Operation;
 import sk.araed.intellij.plugins.stringtools.gui.actions.ActionsRequestListener;
 import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
@@ -33,7 +39,8 @@ public class GuiFactory {
 	}
 
 
-	public OperationSelector createOperationSelector(ResourceKey label, Operation operation, ActionsRequestListener requestListener, ButtonGroup buttonGroup) {
+	public OperationSelector createOperationSelector(ResourceKey label, Operation operation,
+			ActionsRequestListener requestListener, ButtonGroup buttonGroup) {
 		OperationSelector radioButton = new OperationSelector(operation, requestListener);
 		radioButton.setText(resources.getText(label));
 		addMnemonic(radioButton, label);
@@ -47,8 +54,8 @@ public class GuiFactory {
 		//etf.setOneLineMode(false);
 		etf.setLineWrap(true);
 		etf.setBorder(new LineBorder(JBColor.LIGHT_GRAY));
-		etf.setPreferredSize(new Dimension(350, 100));
-		etf.setMinimumSize(new Dimension(350, 100));
+		etf.setPreferredSize(new Dimension(640, 200));
+		etf.setMinimumSize(new Dimension(640, 200));
 		return etf;
 	}
 
@@ -96,9 +103,20 @@ public class GuiFactory {
 		if (icon != null) {
 			component.setIcon(icon);
 		}
-
 	}
 
 
+	public Component createExtendedOperationSelector(final ResourceKey label, final Operation operation,
+			final StringToolsController controller, final ButtonGroup buttonGroup) {
+		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		OperationSelector radioButton = new OperationSelector(operation, null);
+		radioButton.setText(resources.getText(label));
+		addMnemonic(radioButton, label);
+		buttonGroup.add(radioButton);
+		panel.add(radioButton);
+		panel.add(new ComboBox<>(new ExtendedHashOperationProvider().getSupportedHashes()));
 
+		return panel;
+	}
 }

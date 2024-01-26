@@ -33,6 +33,12 @@ public class GridBagBuilder {
 		return this;
 	}
 
+	public GridBagBuilder withWeight(double wX, double wY) {
+		currentGbc.weightx = wX;
+		currentGbc.weighty = wY;
+		return this;
+	}
+
 	public GridBagBuilder withFill(int fill) {
 		currentGbc.fill = fill;
 		return this;

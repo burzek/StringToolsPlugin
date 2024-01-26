@@ -23,7 +23,8 @@ public class ResourceKey implements Cloneable {
 
 	public static final ResourceKey CONVERSION_TITLE = new ResourceKey("conversion.title");
 	public static final ResourceKey CODING_TITLE = new ResourceKey("coding.title");
-	public static final ResourceKey HASH_CRC_TITLE = new ResourceKey("hash-crc.title");
+	public static final ResourceKey HASH_TITLE = new ResourceKey("hash.title");
+	public static final ResourceKey OTHER_TITLE = new ResourceKey("other.title");
 
 	public static final ResourceKey HEX_TO_STRING_ACTION = new ResourceKey("hex.to.string.action");
 	public static final ResourceKey STRING_TO_HEX_ACTION = new ResourceKey("string.to.hex.action");
@@ -38,10 +39,24 @@ public class ResourceKey implements Cloneable {
 	public static final ResourceKey URL_DECODE_ACTION = new ResourceKey("url.decode.action");
 	public static final ResourceKey HTML_ENCODE_ACTION = new ResourceKey("html.encode.action");
 	public static final ResourceKey HTML_DECODE_ACTION = new ResourceKey("html.decode.action");
+	public static final ResourceKey BASIC_AUTH_ENCODE_ACTION = new ResourceKey("basicauth.encode.action");
+	public static final ResourceKey BASIC_AUTH_DECODE_ACTION = new ResourceKey("basicauth.decode.action");
+	public static final ResourceKey JWT_DECODE_ACTION = new ResourceKey("jwt.decode.action");
+
 	public static final ResourceKey ROT13_ACTION = new ResourceKey("rot13.action");
+	public static final ResourceKey MD2_HASH_ACTION = new ResourceKey("md2.hash.action");
+	public static final ResourceKey MD4_HASH_ACTION = new ResourceKey("md4.hash.action");
 	public static final ResourceKey MD5_HASH_ACTION = new ResourceKey("md5.hash.action");
 	public static final ResourceKey SHA_256_ACTION = new ResourceKey("sha256.hash.action");
+	public static final ResourceKey SHA_384_ACTION = new ResourceKey("sha384.hash.action");
 	public static final ResourceKey SHA_512_ACTION = new ResourceKey("sha512.hash.action");
+	public static final ResourceKey SHA3_256_ACTION = new ResourceKey("sha3.256.hash.action");
+	public static final ResourceKey SHA3_384_ACTION = new ResourceKey("sha3.384.hash.action");
+	public static final ResourceKey SHA3_512_ACTION = new ResourceKey("sha3.512.hash.action");
+	public static final ResourceKey KECCAK_256_ACTION = new ResourceKey("keccak.256.hash.action");
+	public static final ResourceKey KECCAK_384_ACTION = new ResourceKey("keccak.384.hash.action");
+	public static final ResourceKey KECCAK_512_ACTION = new ResourceKey("keccak.512.hash.action");
+	public static final ResourceKey CRC16_ACTION = new ResourceKey("crc16.action");
 	public static final ResourceKey CRC32_ACTION = new ResourceKey("crc32.action");
 	public static final ResourceKey LUHN_DIGIT_GEN_ACTION = new ResourceKey("luhn.digit.generator.action");
 
@@ -58,6 +73,7 @@ public class ResourceKey implements Cloneable {
 	public static final ResourceKey ERR_INVALID_LENGTH = new ResourceKey("err.invalid.length");
 	public static final ResourceKey ERR_INVALID_INPUT = new ResourceKey("err.invalid.input");
 	public static final ResourceKey ERR_INTERNAL = new ResourceKey("err.internal");
+
 
 	private final String resourceKey;
 	private final Map<String, Object> params = new HashMap<>();

@@ -43,7 +43,7 @@ public class StringToolsDialog extends DialogBuilder {
 
 		setCenterPanel(mainPanel);
 		removeAllActions();
-		resizable(false);
+		resizable(true);
 		getDialogWrapper().addKeyListener(new KeyStrokeAdapter() {
 				@Override
 				public void keyPressed(KeyEvent event) {
