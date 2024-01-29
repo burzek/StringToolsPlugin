@@ -3,12 +3,10 @@ package sk.araed.intellij.plugins.stringtools.conversion.converters;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.Provider.Service;
 import java.security.Security;
 import java.util.HashMap;
 import java.util.Map;
-
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import sk.araed.intellij.plugins.stringtools.conversion.ConversionResult;
 import sk.araed.intellij.plugins.stringtools.conversion.Converter;
 import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
@@ -16,9 +14,15 @@ import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
 /**
  * @author boris.brinza 10-Oct-2017.
  */
-public abstract class HashConverter implements Converter {
-	protected enum HASH_TYPE {
-		MD5("MD5"), SHA_256("SHA-256"), SHA_512("SHA-512");
+public class HashConverter implements Converter {
+
+	private final HASH_TYPE hashType;
+
+	public enum HASH_TYPE {
+		MD2("MD2"), MD4("MD4"), MD5("MD5"),
+		SHA_256("SHA-256"), SHA_384("SHA-384"), SHA_512("SHA-512"),
+		SHA3_256("SHA3-256"), SHA3_384("SHA3-384"), SHA3_512("SHA3-512"),
+		KECCAK_256("KECCAK-256"), KECCAK_384("KECCAK-384"), KECCAK_512("KECCAK-512");
 
 		private final String algName;
 
@@ -30,6 +34,11 @@ public abstract class HashConverter implements Converter {
 		}
 	}
 	private final Map<HASH_TYPE, MessageDigest> digestMap = new HashMap<>();
+
+
+	public HashConverter(HASH_TYPE hashType) {
+		this.hashType = hashType;
+	}
 
 	@Override
 	public final ConversionResult convert(String input) {
@@ -51,21 +60,16 @@ public abstract class HashConverter implements Converter {
 	}
 
 	private synchronized MessageDigest getMessageDigestInstance() throws NoSuchAlgorithmException {
-		for (final Provider provider : Security.getProviders()) {
-			System.out.println("" + provider.getName());
-			for (final Service service : provider.getServices()) {
-				System.out.println("     " + service.getAlgorithm());
-			}
-		}
-
-		MessageDigest messageDigest = digestMap.get(getHashType());
+		MessageDigest messageDigest = digestMap.get(hashType);
+		Security.addProvider(new BouncyCastleProvider());
 		if (messageDigest == null) {
-			messageDigest = MessageDigest.getInstance(getHashType().getAlgorithmName());
-			digestMap.put(getHashType(), messageDigest);
+
+			messageDigest = MessageDigest.getInstance(hashType.getAlgorithmName());
+			digestMap.put(hashType, messageDigest);
 		}
 		return messageDigest;
 
 	}
 
-	protected abstract HASH_TYPE getHashType();
+//	protected abstract HASH_TYPE getHashType();
 }

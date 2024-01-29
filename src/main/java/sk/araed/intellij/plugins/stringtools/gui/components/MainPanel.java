@@ -120,9 +120,7 @@ public class MainPanel extends JPanel {
 		operations.add(guiFactory.createOperationSelector(ResourceKey.URL_DECODE_ACTION, Operation.URL_DECODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.HTML_ENCODE_ACTION, Operation.HTML_ENCODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.HTML_DECODE_ACTION, Operation.HTML_DECODE, controller, buttonGroup));
-		operations.add(guiFactory.createOperationSelector(ResourceKey.BASIC_AUTH_ENCODE_ACTION, Operation.BASICAUTH_ENCODE, controller, buttonGroup));
-		operations.add(guiFactory.createOperationSelector(ResourceKey.BASIC_AUTH_DECODE_ACTION, Operation.BASICAUTH_DECODE, controller, buttonGroup));
-		operations.add(guiFactory.createOperationSelector(ResourceKey.JWT_DECODE_ACTION, Operation.HTML_DECODE, controller, buttonGroup));
+		operations.add(guiFactory.createOperationSelector(ResourceKey.JWT_DECODE_ACTION, Operation.JWT_DECODE, controller, buttonGroup));
 		operations.subList(6, operations.size()).forEach(radioPanel2::add);
 		guiFactory.addBorder(radioPanel2, ResourceKey.CODING_TITLE);
 		actionsPanel.add(radioPanel2);
@@ -139,7 +137,7 @@ public class MainPanel extends JPanel {
 		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_256_ACTION, Operation.KECCAK256_HASH, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_384_ACTION, Operation.KECCAK384_HASH, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.KECCAK_512_ACTION, Operation.KECCAK512_HASH, controller, buttonGroup));
-		operations.subList(15, operations.size()).forEach(radioPanel3::add);
+		operations.subList(13, operations.size()).forEach(radioPanel3::add);
 		guiFactory.addBorder(radioPanel3, ResourceKey.HASH_TITLE);
 		actionsPanel.add(radioPanel3);
 
@@ -153,7 +151,7 @@ public class MainPanel extends JPanel {
 		operations.add(guiFactory.createOperationSelector(ResourceKey.CRC32_ACTION, Operation.CRC32, controller, buttonGroup));
 		operations.add(guiFactory
 				.createOperationSelector(ResourceKey.LUHN_DIGIT_GEN_ACTION, Operation.LUHN_DIGIT_GENERATOR, controller, buttonGroup));
-		operations.subList(24, operations.size()).forEach(radioPanel4::add);
+		operations.subList(22, operations.size()).forEach(radioPanel4::add);
 		guiFactory.addBorder(radioPanel4, ResourceKey.OTHER_TITLE);
 		actionsPanel.add(radioPanel4);
 

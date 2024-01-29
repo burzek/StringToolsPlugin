@@ -45,8 +45,4 @@ public class UrlEncode implements Converter {
 		return new ConversionResult().withResult(sbuf.toString());
 	}
 
-	public static void main(String[] args) {
-		System.out.println(new UrlEncode().convert("abc<>123 ľšč"));
-
-	}
 }

@@ -104,19 +104,5 @@ public class GuiFactory {
 			component.setIcon(icon);
 		}
 	}
-
-
-	public Component createExtendedOperationSelector(final ResourceKey label, final Operation operation,
-			final StringToolsController controller, final ButtonGroup buttonGroup) {
-		JPanel panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		OperationSelector radioButton = new OperationSelector(operation, null);
-		radioButton.setText(resources.getText(label));
-		addMnemonic(radioButton, label);
-		buttonGroup.add(radioButton);
-		panel.add(radioButton);
-		panel.add(new ComboBox<>(new ExtendedHashOperationProvider().getSupportedHashes()));
-
-		return panel;
-	}
+	
 }

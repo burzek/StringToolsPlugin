@@ -39,8 +39,6 @@ public class ResourceKey implements Cloneable {
 	public static final ResourceKey URL_DECODE_ACTION = new ResourceKey("url.decode.action");
 	public static final ResourceKey HTML_ENCODE_ACTION = new ResourceKey("html.encode.action");
 	public static final ResourceKey HTML_DECODE_ACTION = new ResourceKey("html.decode.action");
-	public static final ResourceKey BASIC_AUTH_ENCODE_ACTION = new ResourceKey("basicauth.encode.action");
-	public static final ResourceKey BASIC_AUTH_DECODE_ACTION = new ResourceKey("basicauth.decode.action");
 	public static final ResourceKey JWT_DECODE_ACTION = new ResourceKey("jwt.decode.action");
 
 	public static final ResourceKey ROT13_ACTION = new ResourceKey("rot13.action");
@@ -72,7 +70,8 @@ public class ResourceKey implements Cloneable {
 
 	public static final ResourceKey ERR_INVALID_LENGTH = new ResourceKey("err.invalid.length");
 	public static final ResourceKey ERR_INVALID_INPUT = new ResourceKey("err.invalid.input");
-	public static final ResourceKey ERR_INTERNAL = new ResourceKey("err.internal");
+	public static final ResourceKey ERR_INTERNAL = new ResourceKey("err.other");
+	public static final ResourceKey JWT_FORMAT_ERROR = new ResourceKey("jwt.format.error") ;
 
 
 	private final String resourceKey;

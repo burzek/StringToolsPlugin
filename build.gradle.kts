@@ -11,6 +11,10 @@ repositories {
   mavenCentral()
 }
 
+dependencies {
+  implementation("com.google.code.gson:gson:2.8.7")
+}
+
 intellij {
   version.set("2023.1.5")
   plugins.set(listOf(/* Plugin Dependencies */))

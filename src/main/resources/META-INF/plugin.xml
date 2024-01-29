@@ -45,8 +45,8 @@
             v4.1
             <small>
               <ul>
+                <li>Added JWT token decoder, SHA3 hashes, Keccak hashes and MD2/4 hashes
                 <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
-                <li>Removed deprecetad API calls (internal)</li>
               </ul>
             </small>
           ]]>
