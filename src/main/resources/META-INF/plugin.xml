@@ -39,13 +39,15 @@
               <ul>
                 <li>Fixed internal errors</li>
                 <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
-                <li>Dialog can be closed by ESC key
+                <li>Dialog can be closed by ESC key</li>
               </ul>
             </small>
             v4.1
             <small>
               <ul>
-                <li>Added JWT token decoder, SHA3 hashes, Keccak hashes and MD2/4 hashes
+                <li>Resizable window</li>
+                <li>Added JWT token decoder</li>
+                <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
                 <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
               </ul>
             </small>
