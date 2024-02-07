@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.intellij.openapi.diagnostic.Logger;
 import java.util.Base64;
+import org.apache.commons.lang3.StringUtils;
 import sk.araed.intellij.plugins.stringtools.conversion.ConversionResult;
 import sk.araed.intellij.plugins.stringtools.conversion.Converter;
 import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
@@ -16,6 +17,10 @@ import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
 public class JwtDecoder implements Converter {
 	@Override
 	public ConversionResult convert(String input) {
+		if (StringUtils.isEmpty(input)) {
+			return new ConversionResult().withResult("");
+		}
+
 		final String[] chunks = input.split("\\.");
 		if (chunks.length < 2 || chunks.length > 3) {
 			return new ConversionResult().withError(ResourceKey.JWT_FORMAT_ERROR);
