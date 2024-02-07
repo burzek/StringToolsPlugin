@@ -4,6 +4,9 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ui.DialogBuilder;
 
+import com.intellij.openapi.util.CachedImageIcon;
+import icons.AppIcons;
+import javax.swing.ImageIcon;
 import org.jetbrains.annotations.NotNull;
 import sk.araed.intellij.plugins.stringtools.gui.components.GuiFactory;
 

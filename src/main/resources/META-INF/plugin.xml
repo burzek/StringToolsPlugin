@@ -54,9 +54,8 @@
 
   <idea-version since-build="203"/>
 
-
   <actions>
-    <action class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction" id="StringTools" text="String Tools">
+    <action icon="AppIcons.actionIcon" class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction" id="StringTools" text="String Tools">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
       <keyboard-shortcut first-keystroke="control shift S" second-keystroke="T" keymap="$default"/>
     </action>
