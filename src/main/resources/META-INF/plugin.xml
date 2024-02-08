@@ -28,7 +28,7 @@
             <br>
             v3.0
             <small>
-              <ul>ttt
+              <ul>
                 <li>Fixed errors</li>
                 <li>Description in status bar is displayed for invalid input or error</li>
               </ul>
@@ -42,6 +42,7 @@
                 <li>Dialog can be closed by ESC key</li>
               </ul>
             </small>
+            <br>
             v4.1
             <small>
               <ul>

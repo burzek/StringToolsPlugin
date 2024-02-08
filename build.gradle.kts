@@ -16,8 +16,8 @@ dependencies {
 }
 
 intellij {
-  version.set("2023.1.5")
-  plugins.set(listOf(/* Plugin Dependencies */))
+  version.set("2023.3.3")
+  type.set("IU")
 }
 
 tasks {
@@ -28,6 +28,7 @@ tasks {
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
   }
-
-
+  patchPluginXml {
+    sinceBuild.set("203")
+  }
 }
