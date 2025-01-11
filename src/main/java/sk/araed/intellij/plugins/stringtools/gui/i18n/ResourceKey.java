@@ -35,6 +35,8 @@ public class ResourceKey implements Cloneable {
 
 	public static final ResourceKey BASE_64_ENCODE_ACTION = new ResourceKey("base64.encode.action");
 	public static final ResourceKey BASE_64_DECODE_ACTION = new ResourceKey("base64.decode.action");
+	public static final ResourceKey BASE_64_MIME_ENCODE_ACTION = new ResourceKey("base64.mime.encode.action");
+	public static final ResourceKey BASE_64_MIME_DECODE_ACTION = new ResourceKey("base64.mime.decode.action");
 	public static final ResourceKey URL_ENCODE_ACTION = new ResourceKey("url.encode.action");
 	public static final ResourceKey URL_DECODE_ACTION = new ResourceKey("url.decode.action");
 	public static final ResourceKey HTML_ENCODE_ACTION = new ResourceKey("html.encode.action");

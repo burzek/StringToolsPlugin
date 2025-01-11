@@ -58,11 +58,103 @@
   <idea-version since-build="203"/>
 
   <actions>
-    <action icon="AppIcons.actionIcon" class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction" id="StringTools" text="String Tools">
+    <action id="sk.araed.intellij.plugins.stringtools.StringTools"
+      icon="AppIcons.actionIcon"
+      class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction"
+      text="String Tools">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
       <keyboard-shortcut first-keystroke="control shift S" second-keystroke="T" keymap="$default"/>
     </action>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"
+      text="String Tools"
+      popup="true"
+      icon="AppIcons.actionIcon">
+      <add-to-group
+        group-id="EditorPopupMenu"/>
+    </group>
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuConversions"
+      text="Conversions"
+      popup="true"
+      icon="AppIcons.actionIcon">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Hex"
+        text="ASCII to HEX">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Hex2Ascii"
+        text="HEX to ASCII">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Binary"
+        text="ASCII to Binary">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Binary2Ascii"
+        text="Binary to ASCII">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Oct"
+        text="ASCII to OCT">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Oct2Ascii"
+        text="OCT to ASCII">
+      </action>
+    </group>
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuEncoders"
+      text="Encoders/Decoders"
+      popup="true"
+      icon="AppIcons.actionIcon">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Base64Encoder"
+
+        text="Base64 encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.Base64Decoder"
+        text="Base64 decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.URLEncoder"
+        text="URL encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.URLDecoder"
+        text="URL decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.HtmlEncoder"
+        text="HTML encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="sk.araed.intellij.plugins.stringtools.popup.HtmlDecoder"
+
+        text="HTML decode">
+      </action>
+    </group>
   </actions>
+
+
 
 
 </idea-plugin>
