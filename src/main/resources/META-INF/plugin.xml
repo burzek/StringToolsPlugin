@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
   <name>String Tools</name>
-  <version>4.1</version>
+  <version>4.2</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -50,6 +50,13 @@
                 <li>Added JWT token decoder</li>
                 <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
                 <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
+              </ul>
+            </small>
+            <br>
+            v4.2
+            <small>
+              <ul>
+                <li>Added Base64 MIME encoder and decoder</li>
               </ul>
             </small>
           ]]>

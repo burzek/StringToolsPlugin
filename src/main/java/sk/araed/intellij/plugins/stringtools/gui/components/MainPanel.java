@@ -116,6 +116,10 @@ public class MainPanel extends JPanel {
 				.createOperationSelector(ResourceKey.BASE_64_ENCODE_ACTION, Operation.BASE_64_ENCODE, controller, buttonGroup));
 		operations.add(guiFactory
 				.createOperationSelector(ResourceKey.BASE_64_DECODE_ACTION, Operation.BASE_64_DECODE, controller, buttonGroup));
+		operations.add(guiFactory
+				.createOperationSelector(ResourceKey.BASE_64_MIME_ENCODE_ACTION, Operation.BASE_64_MIME_ENCODE, controller, buttonGroup));
+		operations.add(guiFactory
+				.createOperationSelector(ResourceKey.BASE_64_MIME_DECODE_ACTION, Operation.BASE_64_MIME_DECODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.URL_ENCODE_ACTION, Operation.URL_ENCODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.URL_DECODE_ACTION, Operation.URL_DECODE, controller, buttonGroup));
 		operations.add(guiFactory.createOperationSelector(ResourceKey.HTML_ENCODE_ACTION, Operation.HTML_ENCODE, controller, buttonGroup));
