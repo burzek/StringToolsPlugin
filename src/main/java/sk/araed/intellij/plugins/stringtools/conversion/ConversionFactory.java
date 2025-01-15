@@ -2,6 +2,8 @@ package sk.araed.intellij.plugins.stringtools.conversion;
 
 import sk.araed.intellij.plugins.stringtools.conversion.converters.Base64Decode;
 import sk.araed.intellij.plugins.stringtools.conversion.converters.Base64Encode;
+import sk.araed.intellij.plugins.stringtools.conversion.converters.Base64MimeDecode;
+import sk.araed.intellij.plugins.stringtools.conversion.converters.Base64MimeEncode;
 import sk.araed.intellij.plugins.stringtools.conversion.converters.BinaryToString;
 import sk.araed.intellij.plugins.stringtools.conversion.converters.CRC16CheckSum;
 import sk.araed.intellij.plugins.stringtools.conversion.converters.CRC32CheckSum;
@@ -86,6 +88,10 @@ public class ConversionFactory {
 				return new LuhnDigitAppender();
 			case JWT_DECODE:
 				return new JwtDecoder();
+			case BASE_64_MIME_DECODE:
+				return new Base64MimeDecode();
+			case BASE_64_MIME_ENCODE:
+				return new Base64MimeEncode();
 			default:
 				throw new IllegalStateException("Invalid transformation:" + transformation);
 
