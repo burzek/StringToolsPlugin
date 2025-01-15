@@ -90,33 +90,33 @@
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Hex"
+        id="STRING_TO_HEX"
         text="ASCII to HEX">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.Hex2Ascii"
+        id="HEX_TO_STRING"
         text="HEX to ASCII">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
         id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Binary"
-        text="ASCII to Binary">
+        text="STRING_TO_BIN">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
         id="sk.araed.intellij.plugins.stringtools.popup.Binary2Ascii"
-        text="Binary to ASCII">
+        text="BIN_TO_STRING">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
         id="sk.araed.intellij.plugins.stringtools.popup.Ascii2Oct"
-        text="ASCII to OCT">
+        text="STRING_TO_OCT">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
         id="sk.araed.intellij.plugins.stringtools.popup.Oct2Ascii"
-        text="OCT to ASCII">
+        text="OCT_TO_STRING">
       </action>
     </group>
     <group
@@ -128,34 +128,91 @@
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.Base64Encoder"
-
+        id="BASE_64_ENCODE"
         text="Base64 encode">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.Base64Decoder"
-        text="Base64 decode">
+        id="BASE_64_DECODE"
+        text="Base64 encode">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.URLEncoder"
+        id="BASE_64_MIME_ENCODE"
+        text="Base64 MIME encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="Base64 MIME decode"
+        text="BASE_64_MIME_DECODE">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="URL_ENCODE"
         text="URL encode">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.URLDecoder"
+        id="URL_DECODE"
         text="URL decode">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.HtmlEncoder"
+        id="HTML_ENCODE"
         text="HTML encode">
       </action>
       <action
         class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
-        id="sk.araed.intellij.plugins.stringtools.popup.HtmlDecoder"
+        id="HTML_DECODE"
+        text="HTML decode">
+      </action>
+    </group>
 
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuEncoders"
+      text="Encoders/Decoders"
+      popup="true"
+      icon="AppIcons.actionIcon">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_ENCODE"
+        text="Base64 encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_DECODE"
+        text="Base64 encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_MIME_ENCODE"
+        text="Base64 MIME encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="Base64 MIME decode"
+        text="BASE_64_MIME_DECODE">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="URL_ENCODE"
+        text="URL encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="URL_DECODE"
+        text="URL decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="HTML_ENCODE"
+        text="HTML encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="HTML_DECODE"
         text="HTML decode">
       </action>
     </group>

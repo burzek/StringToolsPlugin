@@ -38,7 +38,7 @@ public class ReplaceInEditorAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		Project project = null;
     try {
-			PsiDocumentManager.getInstance(ProjectManager.getInstance().))
+			PsiDocumentManager.getInstance(ProjectManager.getInstance().getDefaultProject());
 			final DataContext dataContext = DataManager.getInstance().getDataContextFromFocusAsync().blockingGet(1000);
 			Object x = dataContext.getData(CommonDataKeys.EDITOR);
 

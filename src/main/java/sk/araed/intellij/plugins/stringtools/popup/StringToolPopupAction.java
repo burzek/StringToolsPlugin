@@ -32,7 +32,11 @@ public class StringToolPopupAction extends AnAction  {
 //    }
 //    Logger.getInstance(StringToolPopupAction.class).info("action:" + anActionEvent);
 //    anActionEvent.getActionManager().getAction("sk.araed.intellij.plugins.stringtools.popup.Base64Decoder")
-    System.out.println("action:" + anActionEvent);
+
+    ActionManager actionManager = ActionManager.getInstance();
+    String actionId = actionManager.getId(this);
+
+    System.out.println("action:" + actionId);
 
   }
 }
