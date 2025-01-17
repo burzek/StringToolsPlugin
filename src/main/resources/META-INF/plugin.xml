@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
   <name>String Tools</name>
-  <version>4.2</version>
+  <version>4.21</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -13,6 +13,41 @@
   </description>
 
   <change-notes><![CDATA[
+            v4.21
+            <small>
+              <ul>
+                <li>Added Base64 MIME encoder and decoder</li>
+                <li>Context menu is now available</li>
+              </ul>
+            </small>
+            <br/>
+            v4.1
+            <small>
+              <ul>
+                <li>Resizable window</li>
+                <li>Added JWT token decoder</li>
+                <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
+                <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
+              </ul>
+            </small>
+            <br/>
+            v4.0
+            <small>
+              <ul>
+                <li>Fixed internal errors</li>
+                <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
+                <li>Dialog can be closed by ESC key</li>
+              </ul>
+            </small>
+            <br/>
+            v3.0
+            <small>
+              <ul>
+                <li>Fixed errors</li>
+                <li>Description in status bar is displayed for invalid input or error</li>
+              </ul>
+            </small>
+            <br/>
             v2.0
             <small>
                 <ul>Added new operations
@@ -25,41 +60,9 @@
                    <li>LUHN digit generator</li>
                 </ul>
             </small>
-            <br>
-            v3.0
-            <small>
-              <ul>
-                <li>Fixed errors</li>
-                <li>Description in status bar is displayed for invalid input or error</li>
-              </ul>
-            </small>
-            <br>
-            v4.0
-            <small>
-              <ul>
-                <li>Fixed internal errors</li>
-                <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
-                <li>Dialog can be closed by ESC key</li>
-              </ul>
-            </small>
-            <br>
-            v4.1
-            <small>
-              <ul>
-                <li>Resizable window</li>
-                <li>Added JWT token decoder</li>
-                <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
-                <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
-              </ul>
-            </small>
-            <br>
-            v4.21
-            <small>
-              <ul>
-                <li>Added Base64 MIME encoder and decoder</li>
-                <li>Context menu is now available</li>
-              </ul>
-            </small>
+            <br/>
+            v1.0
+            Initial release
           ]]>
   </change-notes>
 
@@ -86,8 +89,7 @@
     <group
       id="sk.araed.intellij.plugins.stringtools.PopupMenuConversions"
       text="Conversions"
-      popup="true"
-      icon="AppIcons.actionIcon">
+      popup="true">
       <add-to-group
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
       <action
@@ -125,8 +127,7 @@
     <group
       id="sk.araed.intellij.plugins.stringtools.PopupMenuEncoders"
       text="Encoding/Decoding"
-      popup="true"
-      icon="AppIcons.actionIcon">
+      popup="true">
       <add-to-group
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
       <action
@@ -179,8 +180,7 @@
     <group
       id="sk.araed.intellij.plugins.stringtools.PopupMenuHashes"
       text="Hash"
-      popup="true"
-      icon="AppIcons.actionIcon">
+      popup="true">
       <add-to-group
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
 
@@ -234,8 +234,7 @@
     <group
       id="sk.araed.intellij.plugins.stringtools.PopupMenuOther"
       text="Other"
-      popup="true"
-      icon="AppIcons.actionIcon">
+      popup="true">
       <add-to-group
         group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
       <action
@@ -274,11 +273,5 @@
         text="LUHN digit">
       </action>
     </group>
-
-
   </actions>
-
-
-
-
 </idea-plugin>

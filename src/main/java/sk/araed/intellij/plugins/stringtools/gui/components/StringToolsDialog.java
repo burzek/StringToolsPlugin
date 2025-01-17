@@ -24,11 +24,8 @@ public class StringToolsDialog extends DialogBuilder {
 		initialize();
 	}
 
-	private Project getProject() {
-		return project;
-	}
 
-	public Editor getOpenedEditor() {
+	public Editor getCurrentEditor() {
 		if (project != null) {
 			return FileEditorManager.getInstance(project).getSelectedTextEditor();
 		}
@@ -37,7 +34,7 @@ public class StringToolsDialog extends DialogBuilder {
 
 
 	private void initialize() {
-		StringToolsController controller = new StringToolsController(this);
+		final StringToolsController controller = new StringToolsController(this);
 		mainPanel = new MainPanel(controller);
 		loadSelectionFromEditor();
 
@@ -57,7 +54,7 @@ public class StringToolsDialog extends DialogBuilder {
 	}
 
 	private void loadSelectionFromEditor() {
-		Editor editor = FileEditorManager.getInstance(getProject()).getSelectedTextEditor();
+		final Editor editor = getCurrentEditor();
 		if (editor != null) {
 			String selectedText = editor.getSelectionModel().getSelectedText();
 			if (selectedText != null && !selectedText.isEmpty()) {

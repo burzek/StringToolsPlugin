@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "sk.araed.intellij.plugins.stringtools"
-version = "4.2"
+version = "4.21"
 
 repositories {
   mavenCentral()

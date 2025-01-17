@@ -1,7 +1,5 @@
 package sk.araed.intellij.plugins.stringtools;
 
-import com.intellij.openapi.project.ProjectManager;
-import org.apache.tools.ant.Project;
 import sk.araed.intellij.plugins.stringtools.conversion.ConversionProcessor;
 import sk.araed.intellij.plugins.stringtools.data.ConversionData;
 import sk.araed.intellij.plugins.stringtools.data.DataProvider;
@@ -18,7 +16,7 @@ public class StringToolsController implements ActionsRequestListener, DataProvid
 	private final ConversionProcessor conversionProcessor;
 
 
-	public StringToolsController(StringToolsDialog dialog) {
+	public StringToolsController(final StringToolsDialog dialog) {
 		this.dialog = dialog;
 		conversionProcessor = new ConversionProcessor(this);
 
@@ -26,7 +24,7 @@ public class StringToolsController implements ActionsRequestListener, DataProvid
 
 	@Override
 	public ConversionData getConversionData() {
-		return new ConversionData(getMainPanel().getInputContent(), getMainPanel().getOutputContent(),
+		return new ConversionData(dialog.getCurrentEditor(), getMainPanel().getInputContent(), getMainPanel().getOutputContent(),
 				getMainPanel().getSelectedOperation());
 	}
 

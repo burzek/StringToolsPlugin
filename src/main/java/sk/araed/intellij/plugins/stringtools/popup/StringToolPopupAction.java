@@ -6,64 +6,68 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
-import com.intellij.openapi.fileEditor.TextEditor;
-import com.intellij.openapi.project.ProjectManager;
 import org.jetbrains.annotations.NotNull;
-import sk.araed.intellij.plugins.stringtools.conversion.ConversionFactory;
 import sk.araed.intellij.plugins.stringtools.conversion.ConversionProcessor;
-import sk.araed.intellij.plugins.stringtools.conversion.converters.JwtDecoder;
 import sk.araed.intellij.plugins.stringtools.data.ConversionData;
 import sk.araed.intellij.plugins.stringtools.data.DataProvider;
 import sk.araed.intellij.plugins.stringtools.data.Operation;
-import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
 
 public class StringToolPopupAction extends AnAction  {
 
+  private static final Logger log = Logger.getInstance(StringToolPopupAction.class);
+
   static class PopupActionData implements DataProvider {
 
+    private final Editor editor;
     private final String actionId;
     private final String selectedText;
 
-    public PopupActionData(String actionId, String selectedText) {
+    public PopupActionData(
+        final Editor editor,
+        final String actionId,
+        final String selectedText) {
+      this.editor = editor;
       this.actionId = actionId;
       this.selectedText = selectedText;
     }
 
     @Override
     public ConversionData getConversionData() {
-      return new ConversionData(selectedText, "", Operation.valueOf(actionId));
+      return new ConversionData(editor, selectedText, "", Operation.valueOf(actionId));
     }
   }
 
   @Override
   public void actionPerformed(@NotNull final AnActionEvent anActionEvent) {
     if (anActionEvent.getProject() == null) {
+      log.warn("anActionEvnet.project is null");
       return;
     }
 
-    final FileEditor fileEditor = FileEditorManager.getInstance(anActionEvent.getProject()).getSelectedEditor();
-    if (fileEditor instanceof TextEditor) {
-      Editor editor = ((TextEditor) fileEditor).getEditor();
-      String selectedText = editor.getSelectionModel().getSelectedText();
-      if (selectedText != null && !selectedText.isEmpty()) {
+    final Editor editor = FileEditorManager.getInstance(anActionEvent.getProject()).getSelectedTextEditor();
+    if (editor == null) {
+      log.warn("Editor is null");
+      return;
+    }
 
-        int startPosition = editor.getSelectionModel().getSelectionStart();
-        int endPosition = editor.getSelectionModel().getSelectionEnd();
+    final String selectedText = editor.getSelectionModel().getSelectedText();
+    if (selectedText != null && !selectedText.isEmpty()) {
 
-        ActionManager actionManager = ActionManager.getInstance();
-        String actionId = actionManager.getId(this);
-        PopupActionData data = new PopupActionData(actionId, selectedText);
+      final int startPosition = editor.getSelectionModel().getSelectionStart();
+      final int endPosition = editor.getSelectionModel().getSelectionEnd();
 
-        ConversionProcessor processor = new ConversionProcessor(data);
-        final ConversionData conversionData = processor.doConversion();
-        if (conversionData.isInvalidInput()) {
-          return;
-        }
-        WriteCommandAction.runWriteCommandAction(editor.getProject(),
-            () -> editor.getDocument().replaceString(startPosition, endPosition, conversionData.getConvertedText()));
+      ActionManager actionManager = ActionManager.getInstance();
+      String actionId = actionManager.getId(this);
+      PopupActionData data = new PopupActionData(editor, actionId, selectedText);
+
+      ConversionProcessor processor = new ConversionProcessor(data);
+      final ConversionData conversionData = processor.doConversion();
+      if (conversionData.isInvalidInput()) {
+        return;
       }
+      WriteCommandAction.runWriteCommandAction(editor.getProject(),
+          () -> editor.getDocument().replaceString(startPosition, endPosition, conversionData.getConvertedText()));
     }
   }
 }
