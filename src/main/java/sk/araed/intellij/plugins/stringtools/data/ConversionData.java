@@ -9,14 +9,12 @@ import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
  */
 public class ConversionData {
 
-	private final Editor openedEditor;
 	private final String originalText;
 	private String convertedText;
 	private final Operation operation;
 	private ResourceKey errorMessage;
 
-	public ConversionData(Editor openedEditor, String originalText, String convertedText, Operation operation) {
-		this.openedEditor = openedEditor;
+	public ConversionData(String originalText, String convertedText, Operation operation) {
 		this.originalText = originalText;
 		this.convertedText = convertedText;
 		this.operation = operation;
@@ -36,10 +34,6 @@ public class ConversionData {
 
 	public Operation getOperation() {
 		return operation;
-	}
-
-	public Editor getOpenedEditor() {
-		return openedEditor;
 	}
 
 	public void setErrorMessage(ResourceKey errorMessage) {
