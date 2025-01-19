@@ -74,6 +74,9 @@ public class ResourceKey implements Cloneable {
 	public static final ResourceKey ERR_INVALID_INPUT = new ResourceKey("err.invalid.input");
 	public static final ResourceKey ERR_INTERNAL = new ResourceKey("err.other");
 	public static final ResourceKey JWT_FORMAT_ERROR = new ResourceKey("jwt.format.error") ;
+	public static final ResourceKey PAYPAL_LINK = new ResourceKey("paypal.link") ;
+
+
 
 
 	private final String resourceKey;

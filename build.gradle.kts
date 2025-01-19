@@ -12,7 +12,8 @@ repositories {
 }
 
 dependencies {
-  implementation("com.google.code.gson:gson:2.8.7")
+  implementation("com.google.code.gson:gson:2.8.7");
+  implementation("com.paypal.sdk:rest-api-sdk:1.14.0")
 }
 
 intellij {

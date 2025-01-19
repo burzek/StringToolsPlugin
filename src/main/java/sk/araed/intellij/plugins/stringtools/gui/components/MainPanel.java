@@ -1,6 +1,7 @@
 package sk.araed.intellij.plugins.stringtools.gui.components;
 
 import static java.awt.GridBagConstraints.BOTH;
+import static java.awt.GridBagConstraints.EAST;
 import static java.awt.GridBagConstraints.FIRST_LINE_START;
 import static java.awt.GridBagConstraints.HORIZONTAL;
 import static java.awt.GridBagConstraints.NONE;
@@ -8,6 +9,7 @@ import static java.awt.GridBagConstraints.NORTHWEST;
 import static java.awt.GridBagConstraints.VERTICAL;
 
 import com.google.common.collect.Streams;
+import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBUI.Borders;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -26,6 +28,7 @@ import javax.swing.JTextArea;
 
 import com.intellij.ui.components.panels.VerticalLayout;
 
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import sk.araed.intellij.plugins.stringtools.StringToolsController;
 import sk.araed.intellij.plugins.stringtools.data.ConversionData;
@@ -182,6 +185,7 @@ public class MainPanel extends JPanel {
 		//add status line
 		statusLine = guiFactory.createStatusLine();
 		add(statusLine, guiFactory.getGridBagBuilder().withPos(0, 5).withAnchor(GridBagConstraints.CENTER).withGridWidth(2).toGBC());
+
 
 		//actions
 		JPanel buttonPanel = guiFactory.createPanel(new FlowLayout(FlowLayout.LEFT));
