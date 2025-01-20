@@ -16,7 +16,7 @@ public class StringToolsController implements ActionsRequestListener, DataProvid
 	private final ConversionProcessor conversionProcessor;
 
 
-	public StringToolsController(StringToolsDialog dialog) {
+	public StringToolsController(final StringToolsDialog dialog) {
 		this.dialog = dialog;
 		conversionProcessor = new ConversionProcessor(this);
 
@@ -24,7 +24,7 @@ public class StringToolsController implements ActionsRequestListener, DataProvid
 
 	@Override
 	public ConversionData getConversionData() {
-		return new ConversionData(dialog.getOpenedEditor(), getMainPanel().getInputContent(), getMainPanel().getOutputContent(),
+		return new ConversionData(dialog.getCurrentEditor(), getMainPanel().getInputContent(), getMainPanel().getOutputContent(),
 				getMainPanel().getSelectedOperation());
 	}
 
@@ -35,6 +35,7 @@ public class StringToolsController implements ActionsRequestListener, DataProvid
 
 	@Override
 	public void transformationRequested() {
+
 		ConversionData transformationData = conversionProcessor.doConversion();
 
 		getMainPanel().showWarning(transformationData);

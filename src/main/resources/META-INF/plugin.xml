@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
   <name>String Tools</name>
-  <version>4.2</version>
+  <version>4.21</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -13,6 +13,41 @@
   </description>
 
   <change-notes><![CDATA[
+            v4.21
+            <small>
+              <ul>
+                <li>Added Base64 MIME encoder and decoder</li>
+                <li>Context menu is now available</li>
+              </ul>
+            </small>
+            <br/>
+            v4.1
+            <small>
+              <ul>
+                <li>Resizable window</li>
+                <li>Added JWT token decoder</li>
+                <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
+                <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
+              </ul>
+            </small>
+            <br/>
+            v4.0
+            <small>
+              <ul>
+                <li>Fixed internal errors</li>
+                <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
+                <li>Dialog can be closed by ESC key</li>
+              </ul>
+            </small>
+            <br/>
+            v3.0
+            <small>
+              <ul>
+                <li>Fixed errors</li>
+                <li>Description in status bar is displayed for invalid input or error</li>
+              </ul>
+            </small>
+            <br/>
             v2.0
             <small>
                 <ul>Added new operations
@@ -25,51 +60,218 @@
                    <li>LUHN digit generator</li>
                 </ul>
             </small>
-            <br>
-            v3.0
-            <small>
-              <ul>
-                <li>Fixed errors</li>
-                <li>Description in status bar is displayed for invalid input or error</li>
-              </ul>
-            </small>
-            <br>
-            v4.0
-            <small>
-              <ul>
-                <li>Fixed internal errors</li>
-                <li>Url endode/decode is rewritten based on rfc3986 Percent-Encoding</li>
-                <li>Dialog can be closed by ESC key</li>
-              </ul>
-            </small>
-            <br>
-            v4.1
-            <small>
-              <ul>
-                <li>Resizable window</li>
-                <li>Added JWT token decoder</li>
-                <li>Added MD2, MD4, SHA3 and Keccak hashes</li>
-                <li>Fixed URL encode for ASCII values less than ascii code 32 (SPACE)</li>
-              </ul>
-            </small>
-            <br>
-            v4.2
-            <small>
-              <ul>
-                <li>Added Base64 MIME encoder and decoder</li>
-              </ul>
-            </small>
+            <br/>
+            v1.0
+            Initial release
           ]]>
   </change-notes>
 
   <idea-version since-build="203"/>
 
   <actions>
-    <action icon="AppIcons.actionIcon" class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction" id="StringTools" text="String Tools">
+    <action id="sk.araed.intellij.plugins.stringtools.StringTools"
+      icon="AppIcons.actionIcon"
+      class="sk.araed.intellij.plugins.stringtools.StringToolsPluginAction"
+      text="String Tools">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
       <keyboard-shortcut first-keystroke="control shift S" second-keystroke="T" keymap="$default"/>
     </action>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"
+      text="String Tools"
+      popup="true"
+      icon="AppIcons.actionIcon">
+      <add-to-group
+        group-id="EditorPopupMenu"/>
+    </group>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuConversions"
+      text="Conversions"
+      popup="true">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="STRING_TO_HEX"
+        text="ASCII to HEX">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="HEX_TO_STRING"
+        text="HEX to ASCII">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="STRING_TO_BIN"
+        text="ASCII to Binary">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BIN_TO_STRING"
+        text="Binary to ASCII">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="STRING_TO_OCT"
+        text="ASCII to OCT">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="OCT_TO_STRING"
+        text="OCT to ASCII">
+      </action>
+    </group>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuEncoders"
+      text="Encoding/Decoding"
+      popup="true">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_ENCODE"
+        text="Base64 encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_DECODE"
+        text="Base64 decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_MIME_ENCODE"
+        text="Base64 MIME encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="BASE_64_MIME_DECODE"
+        text="Base64 MIME decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="URL_ENCODE"
+        text="URL encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="URL_DECODE"
+        text="URL decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="HTML_ENCODE"
+        text="HTML encode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="HTML_DECODE"
+        text="HTML decode">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="JWT_DECODE"
+        text="JWT decode">
+      </action>
+    </group>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuHashes"
+      text="Hash"
+      popup="true">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA256_HASH"
+        text="SHA256">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA384_HASH"
+        text="SHA384">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA512_HASH"
+        text="SHA512">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA3_256_HASH"
+        text="SHA3-256">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA3_384_HASH"
+        text="SHA3-384">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="SHA3_512_HASH"
+        text="SHA3-512">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="KECCAK256_HASH"
+        text="Keccak-256">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="KECCAK384_HASH"
+        text="Keccak-384">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="KECCAK512_HASH"
+        text="Keccak-512">
+      </action>
+    </group>
+
+    <group
+      id="sk.araed.intellij.plugins.stringtools.PopupMenuOther"
+      text="Other"
+      popup="true">
+      <add-to-group
+        group-id="sk.araed.intellij.plugins.stringtools.PopupMenuAction"/>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="ROT13"
+        text="ROT13">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="MD2_HASH"
+        text="MD2">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="MD4_HASH"
+        text="MD4">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="MD5_HASH"
+        text="MD5">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="CRC16"
+        text="CRC16">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="CRC32"
+        text="CRC32">
+      </action>
+      <action
+        class="sk.araed.intellij.plugins.stringtools.popup.StringToolPopupAction"
+        id="LUHN_DIGIT_GENERATOR"
+        text="LUHN digit">
+      </action>
+    </group>
   </actions>
-
-
 </idea-plugin>

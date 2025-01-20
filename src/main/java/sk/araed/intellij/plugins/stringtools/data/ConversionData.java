@@ -2,6 +2,7 @@ package sk.araed.intellij.plugins.stringtools.data;
 
 import com.intellij.openapi.editor.Editor;
 
+import com.intellij.openapi.project.Project;
 import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
 
 /**
@@ -9,15 +10,19 @@ import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
  */
 public class ConversionData {
 
-	private final Editor openedEditor;
-	private final String originalText;
+  private final Editor currentEditor;
+  private final String originalText;
 	private String convertedText;
 	private final Operation operation;
 	private ResourceKey errorMessage;
 
-	public ConversionData(Editor openedEditor, String originalText, String convertedText, Operation operation) {
-		this.openedEditor = openedEditor;
-		this.originalText = originalText;
+	public ConversionData(
+			final Editor currentEditor,
+			final String originalText,
+			final String convertedText,
+			final Operation operation) {
+    this.currentEditor = currentEditor;
+    this.originalText = originalText;
 		this.convertedText = convertedText;
 		this.operation = operation;
 	}
@@ -38,10 +43,6 @@ public class ConversionData {
 		return operation;
 	}
 
-	public Editor getOpenedEditor() {
-		return openedEditor;
-	}
-
 	public void setErrorMessage(ResourceKey errorMessage) {
 		this.errorMessage = errorMessage;
 	}
@@ -52,5 +53,9 @@ public class ConversionData {
 
 	public boolean isInvalidInput() {
 		return errorMessage != null;
+	}
+
+	public Editor getCurrentEditor() {
+		return currentEditor;
 	}
 }

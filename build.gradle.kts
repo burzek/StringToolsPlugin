@@ -5,14 +5,15 @@ plugins {
 }
 
 group = "sk.araed.intellij.plugins.stringtools"
-version = "4.1"
+version = "4.21"
 
 repositories {
   mavenCentral()
 }
 
 dependencies {
-  implementation("com.google.code.gson:gson:2.8.7")
+  implementation("com.google.code.gson:gson:2.8.7");
+  implementation("com.paypal.sdk:rest-api-sdk:1.14.0")
 }
 
 intellij {
