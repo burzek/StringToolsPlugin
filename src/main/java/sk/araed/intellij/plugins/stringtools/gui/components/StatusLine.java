@@ -28,8 +28,10 @@ import sk.araed.intellij.plugins.stringtools.gui.i18n.Resources;
  */
 public class StatusLine extends JPanel implements UpdateStatusListener {
 
-	private JLabel statusLabel;
+	private static final Color LINK_COLOR = new Color(58, 123, 236);
+
 	private final Resources resources = new Resources();
+	private JLabel statusLabel;
 
 	public StatusLine() {
 		initializeGUI();
@@ -56,8 +58,8 @@ public class StatusLine extends JPanel implements UpdateStatusListener {
 		gbc.weightx = 0.15;
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.EAST;
-		JLabel paypalLbl = new JLabel(resources.getText(ResourceKey.PAYPAL_LINK), SwingConstants.RIGHT);
-		paypalLbl.setForeground(Color.BLUE);
+		JLabel paypalLbl = new JLabel(resources.getText(ResourceKey.PAYPAL_LINK_TEXT), SwingConstants.RIGHT);
+		paypalLbl.setForeground(LINK_COLOR);
 		paypalLbl.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 		Font baseFont = paypalLbl.getFont();
@@ -71,7 +73,7 @@ public class StatusLine extends JPanel implements UpdateStatusListener {
 				try {
 					Desktop.getDesktop().browse(
 							new URI(
-									"https://www.paypal.com/donate/?business=E5TFUG7Z8E3GE&amount=5&no_recurring=0&item_name=StringTools+support&currency_code=EUR"));
+									resources.getText(ResourceKey.PAYPAL_LINK_URL)));
 				} catch (Exception e) {
 					Logger.getInstance(StatusLine.class).error("Error opening paypal url:" + e.getMessage(), e);
 				}
