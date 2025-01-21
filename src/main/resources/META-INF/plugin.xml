@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
   <name>String Tools</name>
-  <version>4.21</version>
+  <version>4.22</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -13,7 +13,7 @@
   </description>
 
   <change-notes><![CDATA[
-            v4.21
+            v4.22
             <small>
               <ul>
                 <li>Added Base64 MIME encoder and decoder</li>
@@ -66,7 +66,7 @@
           ]]>
   </change-notes>
 
-  <idea-version since-build="203"/>
+  <idea-version since-build="231" until-build="251.*"/>
 
   <actions>
     <action id="sk.araed.intellij.plugins.stringtools.StringTools"

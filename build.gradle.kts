@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "sk.araed.intellij.plugins.stringtools"
-version = "4.21"
+version = "4.22"
 
 repositories {
   mavenCentral()
@@ -29,6 +29,7 @@ tasks {
     kotlinOptions.jvmTarget = "11"
   }
   patchPluginXml {
-    sinceBuild.set("203")
+    sinceBuild.set("231")
+    untilBuild.set("251.*")
   }
 }
