@@ -1,5 +1,6 @@
 package sk.araed.intellij.plugins.stringtools.gui.components;
 
+import com.intellij.openapi.Disposable;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -17,7 +18,7 @@ import sk.araed.intellij.plugins.stringtools.gui.actions.ActionsRequestListener;
 /**
  * @author boris.brinza
  */
-public class InputTextEditor extends EditorTextField {
+public class InputTextEditor extends EditorTextField implements Disposable {
 	private boolean showWarning;
 
 	public InputTextEditor(ActionsRequestListener trl) {
@@ -28,7 +29,7 @@ public class InputTextEditor extends EditorTextField {
 			public void documentChanged(@NotNull DocumentEvent event) {
 				trl.transformationRequested();
 			}
-		});
+		}, this);
 	}
 
 	private void initializeGUI() {
@@ -50,4 +51,9 @@ public class InputTextEditor extends EditorTextField {
 			icon.paintIcon(this, g, getWidth() - icon.getIconWidth() - 5, getHeight() - icon.getIconHeight() - 5);
 		}
 	}
+
+  @Override
+  public void dispose() {
+    //no cleanup needed
+  }
 }
