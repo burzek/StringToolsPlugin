@@ -9,6 +9,8 @@ import static java.awt.GridBagConstraints.NORTHWEST;
 import static java.awt.GridBagConstraints.VERTICAL;
 
 import com.google.common.collect.Streams;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBUI.Borders;
 import java.awt.FlowLayout;
@@ -22,8 +24,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.intellij.ui.components.panels.VerticalLayout;
@@ -94,7 +98,13 @@ public class MainPanel extends JPanel {
 		add(guiFactory.createLabel(ResourceKey.CONVERTED_TEXT), guiFactory.getGridBagBuilder().withPos(0, 1)
 				.withFill(HORIZONTAL).withAnchor(NORTHWEST).withWeight(0.0, 0.0).toGBC());
 		outputText = guiFactory.createOutputTextField();
-		add(outputText, guiFactory.getGridBagBuilder().withPos(1, 1).withAnchor(NORTHWEST).withFill(BOTH).toGBC());
+		JBScrollPane outputScrollPane = new JBScrollPane(outputText,
+				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		outputScrollPane.setBorder(BorderFactory.createLineBorder(JBColor.LIGHT_GRAY));
+		outputScrollPane.setPreferredSize(new java.awt.Dimension(640, 200));
+		outputScrollPane.setMinimumSize(new java.awt.Dimension(640, 200));
+		add(outputScrollPane, guiFactory.getGridBagBuilder().withPos(1, 1).withAnchor(NORTHWEST).withFill(BOTH).toGBC());
 
 		//actions panel
 		final JPanel actionsPanel = guiFactory.createPanel(new GridLayout(1, 3));

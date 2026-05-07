@@ -1,6 +1,6 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
-  <name>String Tools</name>
+  <name>StringTools</name>
   <version>4.22</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
@@ -13,6 +13,13 @@
   </description>
 
   <change-notes><![CDATA[
+            v4.30
+            <small>
+              <ul>
+                <li>Scrollbars in input/output text area</li>
+              </ul>
+            </small>
+            <br/>
             v4.23
             <small>
               <ul>

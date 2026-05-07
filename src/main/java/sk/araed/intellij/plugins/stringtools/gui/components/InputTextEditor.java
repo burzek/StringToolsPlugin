@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.Icon;
+import javax.swing.JScrollPane;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.editor.event.DocumentEvent;
@@ -36,6 +37,8 @@ public class InputTextEditor extends EditorTextField implements Disposable {
 		setOneLineMode(false);
 		setPreferredSize(new Dimension(640, 200));
 		setMinimumSize(new Dimension(640, 200));
+		addSettingsProvider(editor ->
+				editor.getScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED));
 	}
 
 	public void showWarning(boolean showWarning) {

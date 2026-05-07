@@ -5,14 +5,14 @@ plugins {
 }
 
 group = "sk.araed.intellij.plugins.stringtools"
-version = "4.23"
+version = "4.30"
 
 repositories {
   mavenCentral()
 }
 
 dependencies {
-  implementation("com.google.code.gson:gson:2.8.7")
+  implementation("com.google.code.gson:gson:2.8.9")
 }
 
 intellij {

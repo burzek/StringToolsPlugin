@@ -1,19 +1,17 @@
 package sk.araed.intellij.plugins.stringtools.gui.components;
 
-import com.intellij.openapi.ui.ComboBox;
-import com.intellij.ui.ComboBoxFieldPanel;
-import com.intellij.util.ui.JBUI.Borders;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import com.intellij.openapi.project.Project;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBLabelDecorator;
 import com.intellij.ui.components.JBPanel;
-
-import sk.araed.intellij.plugins.stringtools.StringToolsController;
-import sk.araed.intellij.plugins.stringtools.conversion.ExtendedHashOperationProvider;
+import java.awt.LayoutManager;
+import javax.swing.AbstractButton;
+import javax.swing.Action;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JTextArea;
 import sk.araed.intellij.plugins.stringtools.data.Operation;
 import sk.araed.intellij.plugins.stringtools.gui.actions.ActionsRequestListener;
 import sk.araed.intellij.plugins.stringtools.gui.i18n.ResourceKey;
@@ -50,13 +48,7 @@ public class GuiFactory {
 
 
 	public JTextArea createOutputTextField() {
-		JTextArea etf = new JTextArea();
-		//etf.setOneLineMode(false);
-		etf.setLineWrap(true);
-		etf.setBorder(new LineBorder(JBColor.LIGHT_GRAY));
-		etf.setPreferredSize(new Dimension(640, 200));
-		etf.setMinimumSize(new Dimension(640, 200));
-		return etf;
+    return new JTextArea();
 	}
 
 	public InputTextEditor createInputTextEditor(ActionsRequestListener requestListener) {
