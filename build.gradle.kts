@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "sk.araed.intellij.plugins.stringtools"
-version = "4.31"
+version = "4.32"
 
 repositories {
   mavenCentral()
@@ -30,6 +30,5 @@ tasks {
   }
   patchPluginXml {
     sinceBuild.set("233")
-    untilBuild.set("261.*")
   }
 }

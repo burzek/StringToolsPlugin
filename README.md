@@ -1,4 +1,7 @@
 # IntelliJ StringToolsPlugin
+4.32
+ - removed upper IDE compatibility limit
+
 4.30
  - scrollbars for input/output text
 

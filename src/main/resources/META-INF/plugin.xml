@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>StringToolsPlugin</id>
   <name>StringTools</name>
-  <version>4.22</version>
+  <version>4.32</version>
   <vendor email="boris.brinza@gmail.com" url="https://www.linkedin.com/in/boris-brinza-5768846/">araed</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -13,6 +13,13 @@
   </description>
 
   <change-notes><![CDATA[
+            v4.32
+            <small>
+              <ul>
+                <li>Removed upper IDE compatibility limit so the plugin stays compatible with future IDE builds</li>
+              </ul>
+            </small>
+            <br/>
             v4.31
             <small>
               <ul>
@@ -83,7 +90,7 @@
           ]]>
   </change-notes>
 
-  <idea-version since-build="231" until-build="251.*"/>
+  <idea-version since-build="231"/>
 
   <actions>
     <action id="sk.araed.intellij.plugins.stringtools.StringTools"
